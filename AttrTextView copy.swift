@@ -43,8 +43,8 @@ class AttrTextView: UITextView {
     
     private func setAttrWithName(attrName: String, wordPrefix: String, color: UIColor, text: String, font: UIFont) {
         //Words can be separated by either a space or a line break
-        var words = text.components(separatedBy: " ")
-        words.append(contentsOf: text.components(separatedBy: "\n"))
+        let charSet = CharacterSet(charactersIn: " \n")
+        let words = text.components(separatedBy: charSet)
        
         //Filter to check for the # or @ prefix
         for word in words.filter({$0.hasPrefix(wordPrefix)}) {
